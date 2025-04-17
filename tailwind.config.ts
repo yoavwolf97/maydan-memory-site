@@ -24,6 +24,10 @@ export default {
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
+				'memorial-blue': '#BFDCE5',
+				'memorial-gold': '#D4AF37',
+				'memorial-charcoal': '#403E43',
+				'memorial-dark': '#221F26',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
@@ -89,6 +93,10 @@ export default {
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out'
+			},
+			fontFamily: {
+				'alef': ['Alef', 'sans-serif'],
+				'assistant': ['Assistant', 'sans-serif']
 			}
 		}
 	},

@@ -99,3 +99,30 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* RTL Support for Hebrew */
+html[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+.rtl-flip {
+  transform: scaleX(-1);
+}
+
+/* Memorial site specific styles */
+.memorial-hero-text {
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.tribute-item {
+  position: relative;
+  padding-right: 1.5rem;
+}
+
+.tribute-item::before {
+  content: "❤";
+  position: absolute;
+  right: 0;
+  color: #D4AF37;
+}
