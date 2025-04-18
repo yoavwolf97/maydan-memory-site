@@ -1,6 +1,8 @@
-import ImageGallery from "@/components/ImageGallery";
+
+import ImageCarousel from "@/components/ImageCarousel";
 import VideoSection from "@/components/VideoSection";
 import BambaGallery from "@/components/BambaGallery";
+import EnhancedSocialLinks from "@/components/EnhancedSocialLinks";
 import { Instagram, Facebook, Youtube, Globe, BookOpen, Flame } from 'lucide-react';
 
 const Index = () => {
@@ -12,7 +14,7 @@ const Index = () => {
     "/lovable-uploads/121d74c8-6435-41eb-b809-606c3182b22a.png",
     "/lovable-uploads/02f9e6b5-8ea8-444a-9ed6-96928f3550b0.png",
     "/lovable-uploads/354d7ca2-56e6-4e56-bbcf-be49638439ff.png",
-    "/lovable-uploads/fe29c73d-e757-4e40-bfc5-3213d2aa1f5a.png",
+    // Removing the 7th image as requested
     "/lovable-uploads/2ba14a73-a5cd-4ad6-8e48-f8926eda432a.png",
   ];
 
@@ -37,6 +39,35 @@ const Index = () => {
     {
       url: "https://www.youtube.com/watch?v=dcT-d4h2Ur0",
       description: "סרטון תמונות"
+    }
+  ];
+
+  // Social links with labels
+  const socialLinks = [
+    { 
+      icon: <Flame size={32} />, 
+      url: "https://www.facebook.com/profile.php?id=100064394576023",
+      label: "עמוד הנצחה בפייסבוק"
+    },
+    { 
+      icon: <BookOpen size={32} />, 
+      url: "https://www.canva.com/design/DAGFG5s8pzY/kpL2DwRv6Yh84s6VWVrPGA/edit",
+      label: "ספר זיכרון"
+    },
+    { 
+      icon: <Globe size={32} />, 
+      url: "https://www.izkor.gov.il/%D7%9E%D7%99%D7%9E%D7%95%D7%9F-%D7%9E%D7%99%D7%93%D7%9F%20%D7%91%D7%99%D7%98%D7%95%D7%9F/en_884932dbbe301884aeb6edad38f6fac7",
+      label: "עמוד יזכור ממשלתי"
+    },
+    { 
+      icon: <Facebook size={32} />, 
+      url: "https://www.facebook.com/maydan23?mibextid=ZbWKwL",
+      label: "עמוד פייסבוק אישי"
+    },
+    { 
+      icon: <Instagram size={32} />, 
+      url: "https://www.instagram.com/maydan_biton?igsh=MnN0eXNyMGQ5ajBn",
+      label: "עמוד אינסטגרם"
     }
   ];
 
@@ -86,8 +117,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Photo Gallery */}
-      <ImageGallery 
+      {/* Photo Gallery - updated to use the new carousel component */}
+      <ImageCarousel 
         images={galleryImages} 
         title="תמונות לזיכרון 📸"
       />
@@ -98,40 +129,17 @@ const Index = () => {
         videos={memorialVideos} 
       />
 
-      {/* במבה וקולה Gallery */}
+      {/* במבה וקולה Gallery - now a grid */}
       <BambaGallery 
         title="פרויקט לזכרו – במבה וקולה 🧡" 
         images={bambaImages}
       />
 
-      {/* Enhanced Social Links */}
-      <div className="w-full py-12 px-4 bg-white" dir="rtl">
-        <h3 className="text-3xl font-alef font-bold mb-8 text-center text-memorial-charcoal">
-          קישורים לזיכרון 🔗
-        </h3>
-        <div className="flex justify-center gap-8 flex-wrap">
-          {[
-            { icon: <Instagram size={32} />, url: "https://www.instagram.com/maydan_biton?igsh=MnN0eXNyMGQ5ajBn" },
-            { icon: <Facebook size={32} />, url: "https://www.facebook.com/maydan23?mibextid=ZbWKwL" },
-            { icon: <Globe size={32} />, url: "https://www.izkor.gov.il/%D7%9E%D7%99%D7%9E%D7%95%D7%9F-%D7%9E%D7%99%D7%93%D7%9F%20%D7%91%D7%99%D7%98%D7%95%D7%9F/en_884932dbbe301884aeb6edad38f6fac7" },
-            { icon: <BookOpen size={32} />, url: "https://www.canva.com/design/DAGFG5s8pzY/kpL2DwRv6Yh84s6VWVrPGA/edit" },
-            { icon: <Flame size={32} />, url: "https://www.facebook.com/profile.php?id=100064394576023" }
-          ].map((link, i) => (
-            <a 
-              key={i}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-full bg-white shadow-md hover:shadow-lg
-                       transform transition-all duration-300
-                       hover:scale-110 hover:text-memorial-gold
-                       border-2 border-transparent hover:border-memorial-gold"
-            >
-              {link.icon}
-            </a>
-          ))}
-        </div>
-      </div>
+      {/* Enhanced Social Links with labels */}
+      <EnhancedSocialLinks 
+        title="קישורים לזיכרון 🔗" 
+        links={socialLinks}
+      />
 
       {/* Enhanced Footer */}
       <footer className="bg-memorial-dark py-8 relative overflow-hidden" dir="rtl">
