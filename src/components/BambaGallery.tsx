@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Autoplay from "embla-carousel-autoplay";
 import {
   Carousel,
@@ -20,7 +20,7 @@ export default function BambaGallery({ title, images }: BambaGalleryProps) {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [isHovered, setIsHovered] = useState(false);
 
-  const plugin = React.useRef(
+  const plugin = useRef(
     Autoplay({ delay: 3000, stopOnInteraction: true })
   );
 
