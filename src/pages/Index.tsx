@@ -1,3 +1,4 @@
+
 import ImageCarousel from "@/components/ImageCarousel";
 import VideoSection from "@/components/VideoSection";
 import BambaGallery from "@/components/BambaGallery";
@@ -5,19 +6,16 @@ import EnhancedSocialLinks from "@/components/EnhancedSocialLinks";
 import { Instagram, Facebook, Youtube, Globe, BookOpen, Flame } from 'lucide-react';
 
 const Index = () => {
-  // Images for gallery - updated with new images
+  // Images for gallery
   const galleryImages = [
-    "/lovable-uploads/588a39d7-0912-4e03-bc4e-aa563741e6e3.png",
-    "/lovable-uploads/12d198f9-008b-49e5-82d0-c5c258524a64.png",
-    "/lovable-uploads/984282b8-3ba6-4577-8492-161970f842eb.png",
-    "/lovable-uploads/ad523a59-2fa3-4f4e-ac3c-e83db27732b2.png",
-    "/lovable-uploads/b56d44b8-754d-418a-9e56-923f0b8cfbfa.png",
-    "/lovable-uploads/3dfe85ab-75ab-4b89-8b9c-42a3c8dd2fff.png",
-    "/lovable-uploads/5b797039-aabe-42a9-be63-6b8104efb4ae.png",
-    "/lovable-uploads/83ec16eb-8bc4-46af-9b82-d01907615038.png",
-    "/lovable-uploads/0c4bc8da-7f9c-4129-a004-80cd60ce120c.png",
-    "/lovable-uploads/2ec37b95-c979-403b-a58d-d9e4edd98213.png",
-    "/lovable-uploads/045b2151-25fc-40ff-83af-29f05665b149.png"
+    "/lovable-uploads/5a207a3c-44f7-4b0a-8246-bc7e7b16a4ba.png",
+    "/lovable-uploads/23b8a627-2408-4b12-9372-8d0a1fc95bea.png",
+    "/lovable-uploads/2da0c4ff-69cb-46a6-8f9e-7b121cc337fb.png",
+    "/lovable-uploads/121d74c8-6435-41eb-b809-606c3182b22a.png",
+    "/lovable-uploads/02f9e6b5-8ea8-444a-9ed6-96928f3550b0.png",
+    "/lovable-uploads/354d7ca2-56e6-4e56-bbcf-be49638439ff.png",
+    // Removing the 7th image as requested
+    "/lovable-uploads/2ba14a73-a5cd-4ad6-8e48-f8926eda432a.png",
   ];
 
   // במבה וקולה project images - updated with new images
@@ -118,13 +116,11 @@ const Index = () => {
           </div>
         </div>
       </section>
-      
-      {/* Enhanced Photo Gallery - now with autoscroll */}
+
+      {/* Photo Gallery - updated to use the new carousel component */}
       <ImageCarousel 
         images={galleryImages} 
         title="תמונות לזיכרון 📸"
-        autoScroll={true}
-        perView={2}
       />
 
       {/* Videos Section */}
