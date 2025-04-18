@@ -1,5 +1,5 @@
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Autoplay from "embla-carousel-autoplay";
 import {
   Carousel,
@@ -14,12 +14,22 @@ import { cn } from '@/lib/utils';
 interface ImageCarouselProps {
   title: string;
   images: string[];
+  autoScroll?: boolean;
+  perView?: number;
 }
 
-export default function ImageCarousel({ title, images }: ImageCarouselProps) {
+export default function ImageCarousel({ 
+  title, 
+  images, 
+  autoScroll = false,
+  perView = 2 
+}: ImageCarouselProps) {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [api, setApi] = useState<CarouselApi>();
+  const plugin = useRef(
+    Autoplay({ delay: 4000, stopOnInteraction: true })
+  );
 
   React.useEffect(() => {
     if (!api) return;
@@ -46,7 +56,10 @@ export default function ImageCarousel({ title, images }: ImageCarouselProps) {
           opts={{
             align: "start",
             loop: true,
+            skipSnaps: false,
+            slidesToScroll: perView,
           }}
+          plugins={autoScroll ? [plugin.current] : []}
           setApi={setApi}
           className="w-full"
         >
@@ -83,7 +96,7 @@ export default function ImageCarousel({ title, images }: ImageCarouselProps) {
 
         {/* Dot indicators */}
         <div className="flex justify-center mt-4 gap-2">
-          {Array.from({ length: Math.ceil(images.length / 2) }).map((_, index) => (
+          {Array.from({ length: Math.ceil(images.length / perView) }).map((_, index) => (
             <button
               key={index}
               className={`h-2 w-2 rounded-full transition-all ${
@@ -96,7 +109,7 @@ export default function ImageCarousel({ title, images }: ImageCarouselProps) {
         </div>
       </div>
 
-      {/* Lightbox with Animation */}
+      {/* Lightbox */}
       {selectedImage && (
         <div 
           className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 animate-in fade-in duration-300"
