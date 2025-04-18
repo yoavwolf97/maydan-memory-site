@@ -8,7 +8,7 @@ interface ImageResponse {
 export const FOLDER_PATHS = {
   HERO: 'תמונה ראשית',
   GALLERY: 'תמונות לגלילה',
-  PROJECT: 'מבצע במבה וקולה'  // Updated to match the actual folder name
+  PROJECT: 'מבצע במבה וקולה'
 } as const;
 
 export async function getImagesFromFolder(folderPath: string): Promise<ImageResponse[]> {

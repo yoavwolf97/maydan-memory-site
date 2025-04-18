@@ -42,4 +42,10 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    outDir: 'dist',
+    rollupOptions: {
+      external: ['express'], // Exclude express from the build
+    }
+  },
 }));
