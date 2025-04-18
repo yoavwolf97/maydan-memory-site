@@ -1,3 +1,4 @@
+
 import ImageCarousel from "@/components/ImageCarousel";
 import VideoSection from "@/components/VideoSection";
 import BambaGallery from "@/components/BambaGallery";
@@ -5,20 +6,16 @@ import EnhancedSocialLinks from "@/components/EnhancedSocialLinks";
 import { Instagram, Facebook, Youtube, Globe, BookOpen, Flame } from 'lucide-react';
 
 const Index = () => {
-  // Images for gallery - updated with new images
+  // Images for gallery
   const galleryImages = [
-    "/lovable-uploads/22c8ed49-ea02-4619-8522-96344c15fd62.png",
-    "/lovable-uploads/2f07a7ed-e80f-4ced-a341-310ce00d973b.png",
-    "/lovable-uploads/b8a1c694-60e9-44e2-b9c3-fc6b279c0428.png",
-    "/lovable-uploads/d0edbad6-c039-4360-9eed-530760a3ef15.png",
-    "/lovable-uploads/a03c54b7-0ea0-4aa8-99d5-221883ca98c1.png",
-    "/lovable-uploads/b447a2e6-2723-4798-94db-39eb04c7d3d3.png",
-    "/lovable-uploads/8e12e1d2-0796-428e-b1e7-05f9e3ad382f.png",
-    "/lovable-uploads/69602cab-4ec6-42f8-852b-b3b8a81d2f27.png",
-    "/lovable-uploads/ca5cd87f-073d-4a4f-93dc-123a18d08ffa.png",
-    "/lovable-uploads/539e5ecb-93d6-4fc1-9a3c-a883d1297538.png",
-    "/lovable-uploads/50146c5a-1f34-4ee2-ba41-7a1e6262ad19.png",
-    "/lovable-uploads/df10532f-a7ba-4516-baa1-71b973486156.png"
+    "/lovable-uploads/5a207a3c-44f7-4b0a-8246-bc7e7b16a4ba.png",
+    "/lovable-uploads/23b8a627-2408-4b12-9372-8d0a1fc95bea.png",
+    "/lovable-uploads/2da0c4ff-69cb-46a6-8f9e-7b121cc337fb.png",
+    "/lovable-uploads/121d74c8-6435-41eb-b809-606c3182b22a.png",
+    "/lovable-uploads/02f9e6b5-8ea8-444a-9ed6-96928f3550b0.png",
+    "/lovable-uploads/354d7ca2-56e6-4e56-bbcf-be49638439ff.png",
+    // Removing the 7th image as requested
+    "/lovable-uploads/2ba14a73-a5cd-4ad6-8e48-f8926eda432a.png",
   ];
 
   // במבה וקולה project images - updated with new images
