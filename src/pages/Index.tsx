@@ -1,9 +1,7 @@
-
 import ImageGallery from "@/components/ImageGallery";
 import VideoSection from "@/components/VideoSection";
-import ExternalLinks from "@/components/ExternalLinks";
 import BambaGallery from "@/components/BambaGallery";
-import { Instagram, Facebook, Youtube, Globe, BookOpen, Flame } from "lucide-react";
+import { Instagram, Facebook, Youtube, Globe, BookOpen, Flame } from 'lucide-react';
 
 const Index = () => {
   // Images for gallery
@@ -18,16 +16,16 @@ const Index = () => {
     "/lovable-uploads/2ba14a73-a5cd-4ad6-8e48-f8926eda432a.png",
   ];
 
-  // במבה וקולה project images
+  // במבה וקולה project images - updated with new images
   const bambaImages = [
-    "/lovable-uploads/489dedcf-401d-4c50-836d-934062769c22.png",
-    "/lovable-uploads/ab23a1ff-26be-4c88-8e48-1a9fabea3a85.png",
-    "/lovable-uploads/34f40273-3426-451f-84ac-9043e0b3b647.png",
-    "/lovable-uploads/7ffd4761-7cd0-4424-ae1a-d2de458c917b.png",
-    "/lovable-uploads/6092d9d8-3046-455e-90b1-f9cc64b69386.png",
-    "/lovable-uploads/a9b6b2d1-221e-49dc-b5f0-84fc76b889ef.png",
-    "/lovable-uploads/177e3d44-b707-439a-89f2-1a614fca0323.png",
-    "/lovable-uploads/361a2aff-8a25-406f-b19d-05798479db72.png",
+    "/lovable-uploads/30197937-48f2-4e04-9e00-875d7c19d3bd.png",
+    "/lovable-uploads/e77b412f-5c3f-43a9-9002-10b13797ae80.png",
+    "/lovable-uploads/3746898e-9eca-437e-a2c4-af2428743628.png",
+    "/lovable-uploads/52325d5d-8f9f-4768-bc5d-138d761ec521.png",
+    "/lovable-uploads/f2880b62-1a92-49b6-ad68-4246716b921e.png",
+    "/lovable-uploads/c158c285-5418-49bf-a7ea-511a0df306e6.png",
+    "/lovable-uploads/90bbc4e5-70a0-4143-956a-1ef0570a083b.png",
+    "/lovable-uploads/5e947e38-329f-40d2-a74b-be9547176375.png"
   ];
 
   // Videos for video section
@@ -44,30 +42,45 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-memorial-blue/30">
-      {/* Hero Section */}
-      <section className="relative w-full min-h-[80vh] flex items-center justify-center">
+      {/* Enhanced Hero Section */}
+      <section className="relative w-full min-h-[90vh] flex items-center justify-center">
         <div 
-          className="absolute inset-0 w-full h-full bg-cover bg-center z-0" 
-          style={{ backgroundImage: `url('${galleryImages[0]}')` }}
-        ></div>
+          className="absolute inset-0 w-full h-full bg-cover bg-center z-0 
+                     animate-in fade-in duration-1000" 
+          style={{ 
+            backgroundImage: `url('${galleryImages[0]}')`,
+            backgroundAttachment: 'fixed'
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/70" />
+        </div>
         
         <div className="absolute bottom-0 left-0 right-0 p-8 text-center z-20">
-          <h1 className="text-5xl md:text-6xl font-alef font-bold text-white drop-shadow-lg">
+          <h1 className="text-5xl md:text-7xl font-alef font-bold text-white drop-shadow-lg
+                        animate-in slide-in-from-bottom duration-700">
             לזכרו של מימון מידן ביטון ז"ל
           </h1>
         </div>
       </section>
 
-      {/* Tribute Text Panel */}
-      <section className="bg-white py-16" dir="rtl">
+      {/* Enhanced Tribute Text Panel */}
+      <section className="bg-white py-16 shadow-inner" dir="rtl">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="text-xl font-assistant text-memorial-charcoal space-y-4">
-              <p>מידן היה האדם הכי מצחיק בעולם ובעל השמחת חיים הגדולה ביותר!</p>
-              <p>הוא תמיד היה עושה חיקויים ומצחיק את כל החברים והמשפחה.</p>
-              <p>הוא היה חבר טוב ובן משפחה מדהים, נתן לכל אחד להרגיש הכי מיוחד בעולם. ❤️</p>
-              <p>הוא ראה את החיים באופטימיות ולא נתן לדברים לעכב אותו.</p>
-              <p>מידן היה מדהים בחייו ולאחר מכן הבנו את זה טוב יותר לאחר מותו.</p>
+            <div className="text-xl font-assistant text-memorial-charcoal space-y-6
+                          divide-y divide-memorial-blue/20">
+              {[
+                "מידן היה האדם הכי מצחיק בעולם ובעל השמחת חיים הגדולה ביותר!",
+                "הוא תמיד היה עושה חיקויים ומצחיק את כל החברים והמשפחה.",
+                "הוא היה חבר טוב ובן משפחה מדהים, נתן לכל אחד להרגיש הכי מיוחד בעולם. ❤️",
+                "הוא ראה את החיים באופטימיות ולא נתן לדברים לעכב אותו.",
+                "מידן היה מדהים בחייו ולאחר מכן הבנו את זה טוב יותר לאחר מותו."
+              ].map((text, i) => (
+                <p key={i} className="py-4 first:pt-0 last:pb-0
+                                    transition-all duration-300 hover:text-memorial-gold">
+                  {text}
+                </p>
+              ))}
             </div>
           </div>
         </div>
@@ -91,39 +104,45 @@ const Index = () => {
         images={bambaImages}
       />
 
-      {/* Social Links */}
+      {/* Enhanced Social Links */}
       <div className="w-full py-12 px-4 bg-white" dir="rtl">
         <h3 className="text-3xl font-alef font-bold mb-8 text-center text-memorial-charcoal">
           קישורים לזיכרון 🔗
         </h3>
-        <div className="flex justify-center gap-8">
-          <a 
-            href="https://www.instagram.com/maydan_biton?igsh=MnN0eXNyMGQ5ajBn"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-memorial-gold hover:text-memorial-charcoal transition-colors"
-          >
-            <Instagram size={32} />
-          </a>
-          <a 
-            href="https://www.facebook.com/maydan23?mibextid=ZbWKwL"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-memorial-gold hover:text-memorial-charcoal transition-colors"
-          >
-            <Facebook size={32} />
-          </a>
+        <div className="flex justify-center gap-8 flex-wrap">
+          {[
+            { icon: <Instagram size={32} />, url: "https://www.instagram.com/maydan_biton?igsh=MnN0eXNyMGQ5ajBn" },
+            { icon: <Facebook size={32} />, url: "https://www.facebook.com/maydan23?mibextid=ZbWKwL" },
+            { icon: <Globe size={32} />, url: "https://www.izkor.gov.il/%D7%9E%D7%99%D7%9E%D7%95%D7%9F-%D7%9E%D7%99%D7%93%D7%9F%20%D7%91%D7%99%D7%98%D7%95%D7%9F/en_884932dbbe301884aeb6edad38f6fac7" },
+            { icon: <BookOpen size={32} />, url: "https://www.canva.com/design/DAGFG5s8pzY/kpL2DwRv6Yh84s6VWVrPGA/edit" },
+            { icon: <Flame size={32} />, url: "https://www.facebook.com/profile.php?id=100064394576023" }
+          ].map((link, i) => (
+            <a 
+              key={i}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 rounded-full bg-white shadow-md hover:shadow-lg
+                       transform transition-all duration-300
+                       hover:scale-110 hover:text-memorial-gold
+                       border-2 border-transparent hover:border-memorial-gold"
+            >
+              {link.icon}
+            </a>
+          ))}
         </div>
       </div>
 
-      {/* Footer */}
-      <footer className="bg-memorial-dark py-8" dir="rtl">
+      {/* Enhanced Footer */}
+      <footer className="bg-memorial-dark py-8 relative overflow-hidden" dir="rtl">
         <div className="container mx-auto px-4">
-          <div className="text-center">
+          <div className="text-center relative z-10">
             <p className="text-white font-assistant">
               © 2025 לזכרו של מימון מידן ביטון ז"ל
             </p>
           </div>
+          <div className="absolute inset-0 bg-[url('/lovable-uploads/5a207a3c-44f7-4b0a-8246-bc7e7b16a4ba.png')] 
+                          opacity-5 bg-cover bg-center" />
         </div>
       </footer>
     </div>
