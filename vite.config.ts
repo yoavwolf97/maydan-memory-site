@@ -10,28 +10,7 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  server: {
-    port: 3000,
-    host: true
-  },
   build: {
-    outDir: 'dist',
-    sourcemap: false,
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom', 'react-router-dom'],
-          ui: [
-            '@radix-ui/react-accordion',
-            '@radix-ui/react-alert-dialog',
-            // ... other UI dependencies
-          ]
-        }
-      }
-    },
-    chunkSizeWarningLimit: 1000
-  },
-  optimizeDeps: {
-    include: ['react', 'react-dom', 'react-router-dom']
+    outDir: 'dist'
   }
 });

@@ -51,7 +51,7 @@ export function getSiteImages(): SiteImages {
   };
 }
 
+// This function is no longer needed since we're not using a server
 export async function deleteOldUploads(): Promise<boolean> {
-  // This function is no longer needed but kept for compatibility
   return true;
 } 
