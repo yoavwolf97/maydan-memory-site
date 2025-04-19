@@ -20,6 +20,9 @@ const Index = () => {
   const galleryImages = [
     "/memory/Screenshot_20231218_004141_Gallery.jpg",
     "/memory/FB_IMG_1480537903939.jpg",
+    "/memory/FB_IMG_1493569203648.jpg",
+    "/memory/FB_IMG_1516881262509.jpg",
+    "/memory/Screenshot_20210422-182520_Facebook.jpg",
   ];
 
   // ─── 3. Bamba & Cola project gallery (manually list everything in public/project/) ───
