@@ -13,10 +13,10 @@ import {
 } from "lucide-react";
 
 const Index = () => {
-  // ─── 1. Hero image (renamed to hero-500x500.png in public/head/) ───
-  const heroImage = "/head/hero-500x500.png";
+  // 1. Hero background (make sure this exact file lives in public/head/)
+  const heroImage = encodeURI("/head/1000097686 (500×500).png");
 
-  // ─── 2. Memorial gallery (manually list exactly what lives in public/memory/) ───
+  // 2. Memorial gallery — list every file under public/memory/
   const galleryImages = [
     "/memory/FB_IMG_1480537903939.jpg",
     "/memory/FB_IMG_1493569203648.jpg",
@@ -31,7 +31,7 @@ const Index = () => {
     "/memory/Screenshot_20231218_004141_Gallery.jpg",
   ];
 
-  // ─── 3. Bamba & Cola project gallery (manually list everything in public/project/) ───
+  // 3. Bamba & Cola project — list every file under public/project/
   const bambaImages = [
     "/project/20160317_105237.jpg",
     "/project/FB_IMG_1458213341726.jpg",
@@ -57,7 +57,7 @@ const Index = () => {
     "/project/FB_IMG_1744901554386.jpg",
   ];
 
-  // ─── 4. Videos ───
+  // 4. Videos
   const memorialVideos = [
     {
       url: "https://www.youtube.com/watch?v=H6LHFxywNSk&t=10s",
@@ -69,7 +69,7 @@ const Index = () => {
     },
   ];
 
-  // ─── 5. Social links ───
+  // 5. Social links
   const socialLinks = [
     {
       icon: <Flame size={32} />,
@@ -78,7 +78,8 @@ const Index = () => {
     },
     {
       icon: <BookOpen size={32} />,
-      url: "https://www.canva.com/design/DAGFG5s8pzY/kpL2DwRv6Yh84s6VWVrPGA/edit",
+      url:
+        "https://www.canva.com/design/DAGFG5s8pzY/kpL2DwRv6Yh84s6VWVrPGA/edit",
       label: "ספר זיכרון",
     },
     {
@@ -116,7 +117,7 @@ const Index = () => {
             bg-sky-400/70 inline-block px-8 py-4 rounded-full
             transform transition-all duration-300 md:text-5xl text-2xl
           ">
-            לזכרו של מימון מידן ביטון ז"ל
+            לזכרו של מימון מידן ביטון ז\"ל
           </h1>
         </div>
       </section>
@@ -157,4 +158,3 @@ const Index = () => {
 };
 
 export default Index;
-
