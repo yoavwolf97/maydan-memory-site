@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import Autoplay from "embla-carousel-autoplay";
 import {
   Carousel,
@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/carousel";
 import { cn } from '@/lib/utils';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { type EmblaCarouselType } from 'embla-carousel-react';
 
 interface ImageCarouselProps {
   images: string[];
@@ -21,7 +22,7 @@ export default function ImageCarousel({ images, title }: ImageCarouselProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const isMobile = useIsMobile();
 
-  const autoplayPlugin = React.useCallback(
+  const autoplayPlugin = useCallback(
     () =>
       Autoplay({
         delay: 4000,
@@ -30,6 +31,11 @@ export default function ImageCarousel({ images, title }: ImageCarouselProps) {
       }),
     []
   );
+
+  // Function to handle carousel slide change
+  const handleCarouselSelect = useCallback((api: EmblaCarouselType) => {
+    setCurrentSlide(api.selectedScrollSnap());
+  }, []);
 
   return (
     <div className="w-full py-12 px-4 bg-memorial-blue/10" dir="rtl">
@@ -47,9 +53,7 @@ export default function ImageCarousel({ images, title }: ImageCarouselProps) {
           }}
           plugins={[autoplayPlugin()]}
           className="w-full relative"
-          onSelect={(api) => {
-            setCurrentSlide(api.selectedScrollSnap());
-          }}
+          onSelect={handleCarouselSelect}
         >
           <CarouselContent>
             {images.map((image, index) => (
@@ -94,7 +98,9 @@ export default function ImageCarousel({ images, title }: ImageCarouselProps) {
                 currentSlide === index ? "bg-memorial-gold w-3" : "bg-memorial-charcoal/30"
               }`}
               onClick={() => {
-                const api = document.querySelector('[role="region"][aria-roledescription="carousel"]')?.__embla__;
+                const carouselElement = document.querySelector('[role="region"][aria-roledescription="carousel"]');
+                // Using the CarouselAPI from our context instead of accessing DOM element
+                const api = (carouselElement as any)?.__embla__;
                 if (api) api.scrollTo(index);
               }}
               aria-label={`Go to slide ${index + 1}`}
