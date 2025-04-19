@@ -1,4 +1,3 @@
-
 import React, { useState, useCallback } from 'react';
 import Autoplay from "embla-carousel-autoplay";
 import {
@@ -10,7 +9,7 @@ import {
 } from "@/components/ui/carousel";
 import { cn } from '@/lib/utils';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { type EmblaCarouselType } from 'embla-carousel-react';
+import type { UseEmblaCarouselType } from 'embla-carousel-react';
 
 interface ImageCarouselProps {
   images: string[];
@@ -33,7 +32,7 @@ export default function ImageCarousel({ images, title }: ImageCarouselProps) {
   );
 
   // Function to handle carousel slide change
-  const handleCarouselSelect = useCallback((api: EmblaCarouselType) => {
+  const handleCarouselSelect = useCallback((api: UseEmblaCarouselType[1]) => {
     setCurrentSlide(api.selectedScrollSnap());
   }, []);
 
