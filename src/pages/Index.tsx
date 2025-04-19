@@ -19,16 +19,6 @@ const Index = () => {
   // ─── 2. Memorial gallery (manually list exactly what lives in public/memory/) ───
   const galleryImages = [
     "/memory/FB_IMG_1480537903939.jpg",
-    "/memory/FB_IMG_1493569203648.jpg",
-    "/memory/FB_IMG_1516881262509.jpg",
-    "/memory/FB_IMG_1651496832705.jpg",
-    "/memory/FB_IMG_1705049089845.jpg",
-    "/memory/FB_IMG_1744902564105.jpg",
-    "/memory/FB_IMG_1744902580216.jpg",
-    "/memory/IMG-20230715-WA0002.jpg",
-    "/memory/IMG-20230715-WA0005.jpg",
-    "/memory/Screenshot_20210422-182520_Facebook.jpg",
-    "/memory/Screenshot_20231218_004141_Gallery.jpg",
   ];
 
   // ─── 3. Bamba & Cola project gallery (manually list everything in public/project/) ───
