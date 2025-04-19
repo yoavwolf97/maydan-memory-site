@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/carousel";
 import { cn } from '@/lib/utils';
 import { useIsMobile } from '@/hooks/use-mobile';
-import type { UseEmblaCarouselType } from 'embla-carousel-react';
+import type { EmblaCarouselType } from 'embla-carousel-react';
 
 interface ImageCarouselProps {
   images: string[];
@@ -31,9 +31,8 @@ export default function ImageCarousel({ images, title }: ImageCarouselProps) {
     []
   );
 
-  // Function to handle carousel slide change
-  const handleCarouselSelect = useCallback((api: UseEmblaCarouselType[1]) => {
-    setCurrentSlide(api.selectedScrollSnap());
+  const onSelect = useCallback((emblaApi: EmblaCarouselType) => {
+    setCurrentSlide(emblaApi.selectedScrollSnap());
   }, []);
 
   return (
@@ -52,7 +51,7 @@ export default function ImageCarousel({ images, title }: ImageCarouselProps) {
           }}
           plugins={[autoplayPlugin()]}
           className="w-full relative"
-          onSelect={handleCarouselSelect}
+          onSelect={onSelect}
         >
           <CarouselContent>
             {images.map((image, index) => (
@@ -88,7 +87,6 @@ export default function ImageCarousel({ images, title }: ImageCarouselProps) {
           <CarouselNext className="rtl-flip -right-12 bg-white/80 hover:bg-white" />
         </Carousel>
 
-        {/* Dot indicators */}
         <div className="flex justify-center mt-4 gap-2">
           {Array.from({ length: Math.ceil(images.length / (isMobile ? 1 : 2)) }).map((_, index) => (
             <button
@@ -98,9 +96,10 @@ export default function ImageCarousel({ images, title }: ImageCarouselProps) {
               }`}
               onClick={() => {
                 const carouselElement = document.querySelector('[role="region"][aria-roledescription="carousel"]');
-                // Using the CarouselAPI from our context instead of accessing DOM element
-                const api = (carouselElement as any)?.__embla__;
-                if (api) api.scrollTo(index);
+                if (carouselElement) {
+                  const api = (carouselElement as any)?.__embla__;
+                  if (api) api.scrollTo(index);
+                }
               }}
               aria-label={`Go to slide ${index + 1}`}
             />
@@ -108,7 +107,6 @@ export default function ImageCarousel({ images, title }: ImageCarouselProps) {
         </div>
       </div>
 
-      {/* Lightbox */}
       {selectedImage && (
         <div 
           className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 animate-in fade-in duration-300"

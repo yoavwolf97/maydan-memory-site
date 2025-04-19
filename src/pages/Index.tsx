@@ -6,29 +6,29 @@ import { Instagram, Facebook, Youtube, Globe, BookOpen, Flame } from 'lucide-rea
 const Index = () => {
   // Memorial Gallery images
   const galleryImages = [
-    "/תמונות לגלילה/FB_IMG_1480537903939.jpg",
-    "/תמונות לגלילה/FB_IMG_1493569203648.jpg",
-    "/תמונות לגלילה/FB_IMG_1516881262509.jpg",
-    "/תמונות לגלילה/FB_IMG_1651496832705.jpg",
-    "/תמונות לגלילה/FB_IMG_1705049089845.jpg",
-    "/תמונות לגלילה/FB_IMG_1744902564105.jpg",
-    "/תמונות לגלילה/FB_IMG_1744902580216.jpg",
-    "/תמונות לגלילה/IMG-20230715-WA0002.jpg",
-    "/תמונות לגלילה/IMG-20230715-WA0005.jpg",
-    "/תמונות לגלילה/Screenshot_20210422-182520_Facebook.jpg",
-    "/תמונות לגלילה/Screenshot_20231218_004141_Gallery.jpg"
+    "/memory/FB_IMG_1480537903939.jpg",
+    "/memory/FB_IMG_1493569203648.jpg",
+    "/memory/FB_IMG_1516881262509.jpg",
+    "/memory/FB_IMG_1651496832705.jpg",
+    "/memory/FB_IMG_1705049089845.jpg",
+    "/memory/FB_IMG_1744902564105.jpg",
+    "/memory/FB_IMG_1744902580216.jpg",
+    "/memory/IMG-20230715-WA0002.jpg",
+    "/memory/IMG-20230715-WA0005.jpg",
+    "/memory/Screenshot_20210422-182520_Facebook.jpg",
+    "/memory/Screenshot_20231218_004141_Gallery.jpg"
   ];
 
-  // במבה וקולה project images
+  // Bamba Project images
   const bambaImages = [
-    "/מבצע במבה וקולה/20160317_105237.jpg",
-    "/מבצע במבה וקולה/FB_IMG_1458213341726.jpg",
-    "/מבצע במבה וקולה/FB_IMG_1458213348773.jpg",
-    "/מבצע במבה וקולה/FB_IMG_1458213383790.jpg",
-    "/מבצע במבה וקולה/FB_IMG_1458213414817.jpg",
-    "/מבצע במבה וקולה/FB_IMG_1458213476975.jpg",
-    "/מבצע במבה וקולה/FB_IMG_1458213632826.jpg",
-    "/מבצע במבה וקולה/FB_IMG_1458213643552.jpg"
+    "/project/20160317_105237.jpg",
+    "/project/FB_IMG_1458213341726.jpg",
+    "/project/FB_IMG_1458213348773.jpg",
+    "/project/FB_IMG_1458213383790.jpg",
+    "/project/FB_IMG_1458213414817.jpg",
+    "/project/FB_IMG_1458213476975.jpg",
+    "/project/FB_IMG_1458213632826.jpg",
+    "/project/FB_IMG_1458213643552.jpg"
   ];
 
   // Videos for video section
@@ -79,7 +79,7 @@ const Index = () => {
         <div 
           className="absolute inset-0 w-full h-full bg-cover bg-center z-0" 
           style={{ 
-            backgroundImage: `url('/תמונה ראשית/1000097686 (500×500).png')`,
+            backgroundImage: `url('/head/1000097686 (500×500).png')`,
             backgroundAttachment: 'fixed'
           }}
         />
@@ -117,7 +117,7 @@ const Index = () => {
         videos={memorialVideos} 
       />
 
-      {/* במבה וקולה Gallery */}
+      {/* Bamba Project Gallery */}
       <ImageCarousel 
         images={bambaImages}
         title="פרויקט לזכרו – במבה וקולה 🧡" 
