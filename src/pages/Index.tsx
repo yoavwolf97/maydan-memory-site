@@ -18,7 +18,7 @@ const Index = () => {
 
   // ─── 2. Memorial gallery (manually list exactly what lives in public/memory/) ───
   const galleryImages = [
-    "/memory/FB_IMG_1480537903939.jpg",
+    "/memory/Screenshot_20231218_004141_Gallery.jpg",
   ];
 
   // ─── 3. Bamba & Cola project gallery (manually list everything in public/project/) ───
