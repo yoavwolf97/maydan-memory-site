@@ -2,11 +2,17 @@ import React from "react";
 import ImageCarousel from "@/components/ImageCarousel";
 import VideoSection from "@/components/VideoSection";
 import EnhancedSocialLinks from "@/components/EnhancedSocialLinks";
-import { Instagram, Facebook, Globe, BookOpen, Flame } from "lucide-react";
+import {
+  Instagram,
+  Facebook,
+  Globe,
+  BookOpen,
+  Flame,
+} from "lucide-react";
 
 const Index = () => {
-  // 1. Hero background image (renamed to kebab‑case)
-  const heroImage = "/head/1000097686-500x500.png";
+  // 1. Hero background image — use encodeURI to handle spaces/parentheses
+  const heroImage = encodeURI("/head/1000097686 (500×500).png");
 
   // 2. Memorial gallery images
   const galleryImages = [
@@ -23,7 +29,7 @@ const Index = () => {
     "/memory/Screenshot_20231218_004141_Gallery.jpg",
   ];
 
-  // 3. Bamba & Cola project images (all filenames exactly as in public/project/)
+  // 3. Bamba & Cola project images
   const bambaImages = [
     "/project/20160317_105237.jpg",
     "/project/FB_IMG_1458213341726.jpg",
@@ -104,9 +110,11 @@ const Index = () => {
         />
         <div className="absolute bottom-0 left-0 right-0 p-8 text-center z-20">
           <h1
-            className="text-5xl md:text-7xl font-alef font-bold text-white mb-8
-                       bg-sky-400/70 inline-block px-8 py-4 rounded-full
-                       transform transition-all duration-300 md:text-5xl text-2xl"
+            className="
+              text-5xl md:text-7xl font-alef font-bold text-white mb-8
+              bg-sky-400/70 inline-block px-8 py-4 rounded-full
+              transform transition-all duration-300 md:text-5xl text-2xl
+            "
           >
             לזכרו של מימון מידן ביטון ז"ל
           </h1>
