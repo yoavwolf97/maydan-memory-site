@@ -18,8 +18,6 @@ const Index = () => {
 
   // ─── 2. Memorial gallery (manually list exactly what lives in public/memory/) ───
   const galleryImages = [
-    "/memory/Screenshot_20231218_004141_Gallery.jpg",
-    "/memory/FB_IMG_1480537903939.jpg",
     "/memory/FB_IMG_1493569203648.jpg",
     "/memory/FB_IMG_1516881262509.jpg",
     "/memory/Screenshot_20210422-182520_Facebook.jpg",
