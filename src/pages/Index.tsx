@@ -18,35 +18,24 @@ const Index = () => {
 
   // ─── 2. Memorial gallery (manually list exactly what lives in public/memory/) ───
   const galleryImages = [
+    "/memory/FB_IMG_1480537903939.jpg",
+    "/memory/FB_IMG_1480537903939.jpg",
     "/memory/FB_IMG_1493569203648.jpg",
     "/memory/FB_IMG_1516881262509.jpg",
+    "/memory/FB_IMG_1651496832705.jpg",
+    "/memory/FB_IMG_1705049089845.jpg",
+    "/memory/FB_IMG_1744902564105.jpg",
+    "/memory/FB_IMG_1744902580216.jpg",
+    "/memory/IMG-20230715-WA0002.jpg",
+    "/memory/IMG-20230715-WA0005.jpg",
     "/memory/Screenshot_20210422-182520_Facebook.jpg",
+    "/memory/Screenshot_20231218_004141_Gallery.jpg",
   ];
 
   // ─── 3. Bamba & Cola project gallery (manually list everything in public/project/) ───
   const bambaImages = [
     "/project/20160317_105237.jpg",
     "/project/FB_IMG_1458213341726.jpg",
-    "/project/FB_IMG_1458213348773.jpg",
-    "/project/FB_IMG_1458213383790.jpg",
-    "/project/FB_IMG_1458213414817.jpg",
-    "/project/FB_IMG_1458213476975.jpg",
-    "/project/FB_IMG_1458213632826.jpg",
-    "/project/FB_IMG_1458213643552.jpg",
-    "/project/FB_IMG_1458213650574.jpg",
-    "/project/FB_IMG_1458213691073.jpg",
-    "/project/FB_IMG_1458213712268.jpg",
-    "/project/FB_IMG_1458214486457.jpg",
-    "/project/FB_IMG_1458218857191.jpg",
-    "/project/FB_IMG_1458218894939.jpg",
-    "/project/FB_IMG_1458219001406.jpg",
-    "/project/FB_IMG_1458219036960.jpg",
-    "/project/FB_IMG_1458234648348.jpg",
-    "/project/FB_IMG_1744901484952.jpg",
-    "/project/FB_IMG_1744901505081.jpg",
-    "/project/FB_IMG_1744901522102.jpg",
-    "/project/FB_IMG_1744901542562.jpg",
-    "/project/FB_IMG_1744901554386.jpg",
   ];
 
   // ─── 4. Videos ───
