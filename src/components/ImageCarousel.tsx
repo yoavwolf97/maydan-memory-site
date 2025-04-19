@@ -1,5 +1,4 @@
-
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback } from 'react';
 import Autoplay from "embla-carousel-autoplay";
 import {
   Carousel,
@@ -35,47 +34,47 @@ export default function ImageCarousel({ images, title }: ImageCarouselProps) {
 
   React.useEffect(() => {
     if (!api) return;
-    
     const onSelect = () => {
       setCurrentSlide(api.selectedScrollSnap());
     };
-
     api.on("select", onSelect);
-    onSelect(); // Call once to initialize
-
+    onSelect(); // initialize
     return () => {
       api.off("select", onSelect);
     };
   }, [api]);
 
+  // how many slides per “page”
+  const slidesPerPage = isMobile ? 1 : 2;
+
   return (
     <div className="w-full py-12 px-4 bg-memorial-blue/10" dir="rtl">
-      <h3 className="text-3xl font-alef font-bold mb-8 text-center text-memorial-charcoal 
-                     transition-all hover:text-memorial-gold">
+      <h3 className="text-3xl font-alef font-bold mb-8 text-center text-memorial-charcoal transition-all hover:text-memorial-gold">
         {title}
       </h3>
-      
+
       <div className="max-w-6xl mx-auto">
         <Carousel
           opts={{
             align: "start",
             loop: true,
-            slidesToScroll: isMobile ? 1 : 2,
+            slidesToScroll: slidesPerPage,
           }}
           plugins={[autoplayPlugin()]}
           className="w-full relative"
           setApi={setApi}
         >
-          <CarouselContent>
+          {/* restored the negative margin so Embla computes correctly */}
+          <CarouselContent className="-ml-2 md:-ml-4">
             {images.map((image, index) => (
-              <CarouselItem 
-                key={index} 
+              <CarouselItem
+                key={index}
                 className={cn(
                   "pl-2 md:pl-4",
                   isMobile ? "basis-full" : "basis-1/2"
                 )}
               >
-                <div 
+                <div
                   className={cn(
                     "aspect-square overflow-hidden rounded-lg shadow-lg cursor-pointer",
                     "transform transition-all duration-300",
@@ -96,28 +95,33 @@ export default function ImageCarousel({ images, title }: ImageCarouselProps) {
               </CarouselItem>
             ))}
           </CarouselContent>
+
           <CarouselPrevious className="rtl-flip -left-12 bg-white/80 hover:bg-white" />
           <CarouselNext className="rtl-flip -right-12 bg-white/80 hover:bg-white" />
         </Carousel>
 
+        {/* Dot indicators now jump by pages */}
         <div className="flex justify-center mt-4 gap-2">
-          {Array.from({ length: Math.ceil(images.length / (isMobile ? 1 : 2)) }).map((_, index) => (
-            <button
-              key={index}
-              className={`h-2 w-2 rounded-full transition-all ${
-                currentSlide === index ? "bg-memorial-gold w-3" : "bg-memorial-charcoal/30"
-              }`}
-              onClick={() => {
-                if (api) api.scrollTo(index);
-              }}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
+          {Array.from({ length: Math.ceil(images.length / slidesPerPage) }).map(
+            (_, page) => (
+              <button
+                key={page}
+                className={`h-2 w-2 rounded-full transition-all ${
+                  currentSlide === page * slidesPerPage
+                    ? "bg-memorial-gold w-3"
+                    : "bg-memorial-charcoal/30"
+                }`}
+                onClick={() => api?.scrollTo(page * slidesPerPage)}
+                aria-label={`Go to page ${page + 1}`}
+              />
+            )
+          )}
         </div>
       </div>
 
+      {/* Lightbox */}
       {selectedImage && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 animate-in fade-in duration-300"
           onClick={() => setSelectedImage(null)}
         >
@@ -125,12 +129,10 @@ export default function ImageCarousel({ images, title }: ImageCarouselProps) {
             <img
               src={selectedImage}
               alt="תמונה מוגדלת"
-              className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl
-                         animate-in zoom-in duration-300"
+              className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl animate-in zoom-in duration-300"
             />
-            <button 
-              className="absolute top-4 right-4 text-white hover:text-memorial-gold
-                         transition-colors duration-200"
+            <button
+              className="absolute top-4 right-4 text-white hover:text-memorial-gold transition-colors duration-200"
               onClick={(e) => {
                 e.stopPropagation();
                 setSelectedImage(null);
@@ -144,3 +146,4 @@ export default function ImageCarousel({ images, title }: ImageCarouselProps) {
     </div>
   );
 }
+
