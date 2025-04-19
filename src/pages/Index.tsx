@@ -1,10 +1,11 @@
+
 import ImageCarousel from "@/components/ImageCarousel";
 import VideoSection from "@/components/VideoSection";
 import EnhancedSocialLinks from "@/components/EnhancedSocialLinks";
 import { Instagram, Facebook, Youtube, Globe, BookOpen, Flame } from 'lucide-react';
 
 const Index = () => {
-  // Memorial Gallery images
+  // Memorial Gallery images - updated paths to use /memory/
   const galleryImages = [
     "/memory/FB_IMG_1480537903939.jpg",
     "/memory/FB_IMG_1493569203648.jpg",
@@ -19,7 +20,7 @@ const Index = () => {
     "/memory/Screenshot_20231218_004141_Gallery.jpg"
   ];
 
-  // Bamba Project images
+  // Bamba Project images - updated paths to use /project/
   const bambaImages = [
     "/project/20160317_105237.jpg",
     "/project/FB_IMG_1458213341726.jpg",
@@ -74,7 +75,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-memorial-blue/30">
-      {/* Hero Section */}
+      {/* Hero Section - updated image path to use /head/ */}
       <section className="relative w-full min-h-[90vh] flex items-center justify-center">
         <div 
           className="absolute inset-0 w-full h-full bg-cover bg-center z-0" 
@@ -105,7 +106,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Photo Gallery */}
+      {/* Photo Gallery - using updated paths in galleryImages array */}
       <ImageCarousel 
         images={galleryImages} 
         title="תמונות לזיכרון 📸" 
@@ -117,7 +118,7 @@ const Index = () => {
         videos={memorialVideos} 
       />
 
-      {/* Bamba Project Gallery */}
+      {/* Bamba Project Gallery - using updated paths in bambaImages array */}
       <ImageCarousel 
         images={bambaImages}
         title="פרויקט לזכרו – במבה וקולה 🧡" 
