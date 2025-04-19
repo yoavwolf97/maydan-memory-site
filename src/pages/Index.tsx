@@ -75,12 +75,12 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-memorial-blue/30">
-      {/* Hero Section - updated image path to use /head/ */}
+      {/* Hero Section - updated image path to use /head/ with renamed file */}
       <section className="relative w-full min-h-[90vh] flex items-center justify-center">
         <div 
           className="absolute inset-0 w-full h-full bg-cover bg-center z-0" 
           style={{ 
-            backgroundImage: `url('/head/1000097686 (500×500).png')`,
+            backgroundImage: `url('/head/1000097686-500x500.png')`,
             backgroundAttachment: 'fixed'
           }}
         />
