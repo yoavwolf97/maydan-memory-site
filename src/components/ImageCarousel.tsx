@@ -1,5 +1,5 @@
 
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import Autoplay from "embla-carousel-autoplay";
 import {
   Carousel,
@@ -7,32 +7,29 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-  type CarouselApi
 } from "@/components/ui/carousel";
 import { cn } from '@/lib/utils';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface ImageCarouselProps {
-  title: string;
   images: string[];
+  title: string;
 }
 
-export default function ImageCarousel({ title, images }: ImageCarouselProps) {
+export default function ImageCarousel({ images, title }: ImageCarouselProps) {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [api, setApi] = useState<CarouselApi>();
+  const isMobile = useIsMobile();
 
-  React.useEffect(() => {
-    if (!api) return;
-
-    const onSelect = () => {
-      setCurrentSlide(api.selectedScrollSnap());
-    };
-
-    api.on("select", onSelect);
-    return () => {
-      api.off("select", onSelect);
-    };
-  }, [api]);
+  const autoplayPlugin = React.useCallback(
+    () =>
+      Autoplay({
+        delay: 4000,
+        stopOnInteraction: true,
+        stopOnMouseEnter: true,
+      }),
+    []
+  );
 
   return (
     <div className="w-full py-12 px-4 bg-memorial-blue/10" dir="rtl">
@@ -46,15 +43,22 @@ export default function ImageCarousel({ title, images }: ImageCarouselProps) {
           opts={{
             align: "start",
             loop: true,
+            slidesToScroll: isMobile ? 1 : 2,
           }}
-          setApi={setApi}
-          className="w-full"
+          plugins={[autoplayPlugin()]}
+          className="w-full relative"
+          onSelect={(api) => {
+            setCurrentSlide(api.selectedScrollSnap());
+          }}
         >
-          <CarouselContent className="-ml-2 md:-ml-4">
+          <CarouselContent>
             {images.map((image, index) => (
               <CarouselItem 
                 key={index} 
-                className="pl-2 md:pl-4 basis-1/2"
+                className={cn(
+                  "pl-2 md:pl-4",
+                  isMobile ? "basis-full" : "basis-1/2"
+                )}
               >
                 <div 
                   className={cn(
@@ -83,20 +87,23 @@ export default function ImageCarousel({ title, images }: ImageCarouselProps) {
 
         {/* Dot indicators */}
         <div className="flex justify-center mt-4 gap-2">
-          {Array.from({ length: Math.ceil(images.length / 2) }).map((_, index) => (
+          {Array.from({ length: Math.ceil(images.length / (isMobile ? 1 : 2)) }).map((_, index) => (
             <button
               key={index}
               className={`h-2 w-2 rounded-full transition-all ${
                 currentSlide === index ? "bg-memorial-gold w-3" : "bg-memorial-charcoal/30"
               }`}
-              onClick={() => api?.scrollTo(index)}
+              onClick={() => {
+                const api = document.querySelector('[role="region"][aria-roledescription="carousel"]')?.__embla__;
+                if (api) api.scrollTo(index);
+              }}
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}
         </div>
       </div>
 
-      {/* Lightbox with Animation */}
+      {/* Lightbox */}
       {selectedImage && (
         <div 
           className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 animate-in fade-in duration-300"

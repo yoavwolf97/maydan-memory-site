@@ -1,33 +1,34 @@
-
 import ImageCarousel from "@/components/ImageCarousel";
 import VideoSection from "@/components/VideoSection";
-import BambaGallery from "@/components/BambaGallery";
 import EnhancedSocialLinks from "@/components/EnhancedSocialLinks";
 import { Instagram, Facebook, Youtube, Globe, BookOpen, Flame } from 'lucide-react';
 
 const Index = () => {
-  // Images for gallery
+  // Memorial Gallery images
   const galleryImages = [
-    "/lovable-uploads/5a207a3c-44f7-4b0a-8246-bc7e7b16a4ba.png",
-    "/lovable-uploads/23b8a627-2408-4b12-9372-8d0a1fc95bea.png",
-    "/lovable-uploads/2da0c4ff-69cb-46a6-8f9e-7b121cc337fb.png",
-    "/lovable-uploads/121d74c8-6435-41eb-b809-606c3182b22a.png",
-    "/lovable-uploads/02f9e6b5-8ea8-444a-9ed6-96928f3550b0.png",
-    "/lovable-uploads/354d7ca2-56e6-4e56-bbcf-be49638439ff.png",
-    // Removing the 7th image as requested
-    "/lovable-uploads/2ba14a73-a5cd-4ad6-8e48-f8926eda432a.png",
+    "/תמונות לגלילה/FB_IMG_1480537903939.jpg",
+    "/תמונות לגלילה/FB_IMG_1493569203648.jpg",
+    "/תמונות לגלילה/FB_IMG_1516881262509.jpg",
+    "/תמונות לגלילה/FB_IMG_1651496832705.jpg",
+    "/תמונות לגלילה/FB_IMG_1705049089845.jpg",
+    "/תמונות לגלילה/FB_IMG_1744902564105.jpg",
+    "/תמונות לגלילה/FB_IMG_1744902580216.jpg",
+    "/תמונות לגלילה/IMG-20230715-WA0002.jpg",
+    "/תמונות לגלילה/IMG-20230715-WA0005.jpg",
+    "/תמונות לגלילה/Screenshot_20210422-182520_Facebook.jpg",
+    "/תמונות לגלילה/Screenshot_20231218_004141_Gallery.jpg"
   ];
 
-  // במבה וקולה project images - updated with new images
+  // במבה וקולה project images
   const bambaImages = [
-    "/lovable-uploads/30197937-48f2-4e04-9e00-875d7c19d3bd.png",
-    "/lovable-uploads/e77b412f-5c3f-43a9-9002-10b13797ae80.png",
-    "/lovable-uploads/3746898e-9eca-437e-a2c4-af2428743628.png",
-    "/lovable-uploads/52325d5d-8f9f-4768-bc5d-138d761ec521.png",
-    "/lovable-uploads/f2880b62-1a92-49b6-ad68-4246716b921e.png",
-    "/lovable-uploads/c158c285-5418-49bf-a7ea-511a0df306e6.png",
-    "/lovable-uploads/90bbc4e5-70a0-4143-956a-1ef0570a083b.png",
-    "/lovable-uploads/5e947e38-329f-40d2-a74b-be9547176375.png"
+    "/מבצע במבה וקולה/20160317_105237.jpg",
+    "/מבצע במבה וקולה/FB_IMG_1458213341726.jpg",
+    "/מבצע במבה וקולה/FB_IMG_1458213348773.jpg",
+    "/מבצע במבה וקולה/FB_IMG_1458213383790.jpg",
+    "/מבצע במבה וקולה/FB_IMG_1458213414817.jpg",
+    "/מבצע במבה וקולה/FB_IMG_1458213476975.jpg",
+    "/מבצע במבה וקולה/FB_IMG_1458213632826.jpg",
+    "/מבצע במבה וקולה/FB_IMG_1458213643552.jpg"
   ];
 
   // Videos for video section
@@ -73,54 +74,41 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-memorial-blue/30">
-      {/* Enhanced Hero Section */}
+      {/* Hero Section */}
       <section className="relative w-full min-h-[90vh] flex items-center justify-center">
         <div 
-          className="absolute inset-0 w-full h-full bg-cover bg-center z-0 
-                     animate-in fade-in duration-1000" 
+          className="absolute inset-0 w-full h-full bg-cover bg-center z-0" 
           style={{ 
-            backgroundImage: `url('${galleryImages[0]}')`,
+            backgroundImage: `url('/תמונה ראשית/1000097686 (500×500).png')`,
             backgroundAttachment: 'fixed'
           }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/70" />
-        </div>
+        />
         
         <div className="absolute bottom-0 left-0 right-0 p-8 text-center z-20">
-          <h1 className="text-5xl md:text-7xl font-alef font-bold text-white drop-shadow-lg
-                        animate-in slide-in-from-bottom duration-700">
+          <h1 className="text-5xl md:text-7xl font-alef font-bold text-white mb-8
+                        bg-sky-400/70 inline-block px-8 py-4 rounded-full
+                        transform transition-all duration-300
+                        md:text-5xl text-2xl">
             לזכרו של מימון מידן ביטון ז"ל
           </h1>
         </div>
       </section>
 
-      {/* Enhanced Tribute Text Panel */}
+      {/* Tribute Text Panel */}
       <section className="bg-white py-16 shadow-inner" dir="rtl">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 md:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="text-xl font-assistant text-memorial-charcoal space-y-6
-                          divide-y divide-memorial-blue/20">
-              {[
-                "מידן היה האדם הכי מצחיק בעולם ובעל השמחת חיים הגדולה ביותר!",
-                "הוא תמיד היה עושה חיקויים ומצחיק את כל החברים והמשפחה.",
-                "הוא היה חבר טוב ובן משפחה מדהים, נתן לכל אחד להרגיש הכי מיוחד בעולם. ❤️",
-                "הוא ראה את החיים באופטימיות ולא נתן לדברים לעכב אותו.",
-                "מידן היה מדהים בחייו ולאחר מכן הבנו את זה טוב יותר לאחר מותו."
-              ].map((text, i) => (
-                <p key={i} className="py-4 first:pt-0 last:pb-0
-                                    transition-all duration-300 hover:text-memorial-gold">
-                  {text}
-                </p>
-              ))}
-            </div>
+            <p className="text-base md:text-xl font-assistant text-memorial-charcoal leading-relaxed">
+              מידן היה האדם הכי מצחיק בעולם ובעל השמחת חיים הגדולה ביותר! הוא תמיד היה עושה חיקויים ומצחיק את כל החברים והמשפחה, היה חבר טוב ובן משפחה מדהים שנתן לכל אחד להרגיש הכי מיוחד בעולם, ראה את החיים באופטימיות ולא נתן לשום דבר לעכב אותו, ומידת ההערכה אל חייו רק גדלה לאחר מותו.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Photo Gallery - updated to use the new carousel component */}
+      {/* Photo Gallery */}
       <ImageCarousel 
         images={galleryImages} 
-        title="תמונות לזיכרון 📸"
+        title="תמונות לזיכרון 📸" 
       />
 
       {/* Videos Section */}
@@ -129,19 +117,19 @@ const Index = () => {
         videos={memorialVideos} 
       />
 
-      {/* במבה וקולה Gallery - now a grid */}
-      <BambaGallery 
-        title="פרויקט לזכרו – במבה וקולה 🧡" 
+      {/* במבה וקולה Gallery */}
+      <ImageCarousel 
         images={bambaImages}
+        title="פרויקט לזכרו – במבה וקולה 🧡" 
       />
 
-      {/* Enhanced Social Links with labels */}
+      {/* Enhanced Social Links */}
       <EnhancedSocialLinks 
         title="קישורים לזיכרון 🔗" 
         links={socialLinks}
       />
 
-      {/* Enhanced Footer */}
+      {/* Footer */}
       <footer className="bg-memorial-dark py-8 relative overflow-hidden" dir="rtl">
         <div className="container mx-auto px-4">
           <div className="text-center relative z-10">
@@ -149,8 +137,6 @@ const Index = () => {
               © 2025 לזכרו של מימון מידן ביטון ז"ל
             </p>
           </div>
-          <div className="absolute inset-0 bg-[url('/lovable-uploads/5a207a3c-44f7-4b0a-8246-bc7e7b16a4ba.png')] 
-                          opacity-5 bg-cover bg-center" />
         </div>
       </footer>
     </div>
