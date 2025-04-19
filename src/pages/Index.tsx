@@ -11,51 +11,24 @@ import {
 } from "lucide-react";
 
 const Index = () => {
-  // 1. Hero background image — use encodeURI to handle spaces/parentheses
-  const heroImage = encodeURI("/head/1000097686 (500×500).png");
+  // 1. Hero background image (rename your file to hero-500x500.png)
+  const heroImage = "/head/hero-500x500.png";
 
-  // 2. Memorial gallery images
-  const galleryImages = [
-    "/memory/FB_IMG_1480537903939.jpg",
-    "/memory/FB_IMG_1493569203648.jpg",
-    "/memory/FB_IMG_1516881262509.jpg",
-    "/memory/FB_IMG_1651496832705.jpg",
-    "/memory/FB_IMG_1705049089845.jpg",
-    "/memory/FB_IMG_1744902564105.jpg",
-    "/memory/FB_IMG_1744902580216.jpg",
-    "/memory/IMG-20230715-WA0002.jpg",
-    "/memory/IMG-20230715-WA0005.jpg",
-    "/memory/Screenshot_20210422-182520_Facebook.jpg",
-    "/memory/Screenshot_20231218_004141_Gallery.jpg",
-  ];
+  // 2. Auto‑import every JPG/PNG under /public/memory
+  const memoryModules = import.meta.glob("/memory/*.{jpg,png}", {
+    eager: true,
+    as: "url",
+  });
+  const galleryImages = Object.values(memoryModules) as string[];
 
-  // 3. Bamba & Cola project images
-  const bambaImages = [
-    "/project/20160317_105237.jpg",
-    "/project/FB_IMG_1458213341726.jpg",
-    "/project/FB_IMG_1458213348773.jpg",
-    "/project/FB_IMG_1458213383790.jpg",
-    "/project/FB_IMG_1458213414817.jpg",
-    "/project/FB_IMG_1458213476975.jpg",
-    "/project/FB_IMG_1458213632826.jpg",
-    "/project/FB_IMG_1458213643552.jpg",
-    "/project/FB_IMG_1458213650574.jpg",
-    "/project/FB_IMG_1458213691073.jpg",
-    "/project/FB_IMG_1458213712268.jpg",
-    "/project/FB_IMG_1458214486457.jpg",
-    "/project/FB_IMG_1458218857191.jpg",
-    "/project/FB_IMG_1458218894939.jpg",
-    "/project/FB_IMG_1458219001406.jpg",
-    "/project/FB_IMG_1458219036960.jpg",
-    "/project/FB_IMG_1458234648348.jpg",
-    "/project/FB_IMG_1744901484952.jpg",
-    "/project/FB_IMG_1744901505081.jpg",
-    "/project/FB_IMG_1744901522102.jpg",
-    "/project/FB_IMG_1744901542562.jpg",
-    "/project/FB_IMG_1744901554386.jpg",
-  ];
+  // 3. Auto‑import every JPG/PNG under /public/project
+  const projectModules = import.meta.glob("/project/*.{jpg,png}", {
+    eager: true,
+    as: "url",
+  });
+  const bambaImages = Object.values(projectModules) as string[];
 
-  // 4. Videos
+  // 4. Videos for the video section
   const memorialVideos = [
     {
       url: "https://www.youtube.com/watch?v=H6LHFxywNSk&t=10s",
@@ -126,7 +99,10 @@ const Index = () => {
         <div className="container mx-auto px-4 md:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-base md:text-xl font-assistant text-memorial-charcoal leading-relaxed">
-              מידן היה האדם הכי מצחיק בעולם ובעל השמחת חיים הגדולה ביותר! הוא תמיד היה עושה חיקויים ומצחיק את כל החברים והמשפחה, היה חבר טוב ובן משפחה מדהים שנתן לכל אחד להרגיש הכי מיוחד בעולם, ראה את החיים באופטימיות ולא נתן לשום דבר לעכב אותו, ומידת ההערכה אל חייו רק גדלה לאחר מותו.
+              מידן היה האדם הכי מצחיק בעולם ובעל השמחת חיים הגדולה ביותר! הוא תמיד היה עושה חיקויים ומצחיק את כל החברים והמשפחה, היה חבר טוב ובן
+              משפחה מדהים שנתן לכל אחד להרגיש הכי מיוחד בעולם, ראה את החיים
+              באופטימיות ולא נתן לשום דבר לעכב אותו, ומידת ההערכה אל חייו רק
+              גדלה לאחר מותו.
             </p>
           </div>
         </div>
