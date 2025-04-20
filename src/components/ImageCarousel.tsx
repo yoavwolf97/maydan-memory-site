@@ -36,25 +36,22 @@ export default function ImageCarousel({ images, title }: ImageCarouselProps) {
   React.useEffect(() => {
     if (!api) return;
 
-    // Update current slide index when the carousel moves
     const onSelect = () => {
       const index = api.selectedScrollSnap();
       setCurrentSlide(index);
     };
 
     api.on("select", onSelect);
-    onSelect(); // Initialize with current position
+    onSelect();
 
     return () => {
       api.off("select", onSelect);
     };
   }, [api]);
 
-  // Calculate total number of pages based on slidesPerPage
   const slidesPerPage = isMobile ? 1 : 2;
   const totalPages = Math.ceil(images.length / slidesPerPage);
 
-  // Group images into pairs for desktop view
   const getImagesForSlide = (index: number) => {
     const startIdx = index * slidesPerPage;
     return images.slice(startIdx, startIdx + slidesPerPage);
@@ -102,6 +99,7 @@ export default function ImageCarousel({ images, title }: ImageCarouselProps) {
                           src={image}
                           alt={`תמונה ${pageIndex * slidesPerPage + imageIndex + 1}`}
                           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                          loading="lazy"
                         />
                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
                       </div>
@@ -116,7 +114,6 @@ export default function ImageCarousel({ images, title }: ImageCarouselProps) {
           <CarouselNext className="rtl-flip -right-12 bg-white/80 hover:bg-white" />
         </Carousel>
 
-        {/* Dot indicators */}
         <div className="flex justify-center mt-4 gap-2">
           {Array.from({ length: totalPages }).map((_, page) => (
             <button
@@ -133,7 +130,6 @@ export default function ImageCarousel({ images, title }: ImageCarouselProps) {
         </div>
       </div>
 
-      {/* Lightbox */}
       {selectedImage && (
         <div
           className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 animate-in fade-in duration-300"
