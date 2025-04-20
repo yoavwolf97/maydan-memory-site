@@ -1,3 +1,4 @@
+
 import React, { useState, useCallback } from 'react';
 import Autoplay from "embla-carousel-autoplay";
 import {
@@ -34,18 +35,30 @@ export default function ImageCarousel({ images, title }: ImageCarouselProps) {
 
   React.useEffect(() => {
     if (!api) return;
+
+    // Update current slide index when the carousel moves
     const onSelect = () => {
-      setCurrentSlide(api.selectedScrollSnap());
+      const index = api.selectedScrollSnap();
+      setCurrentSlide(index);
     };
+
     api.on("select", onSelect);
-    onSelect(); // initialize
+    onSelect(); // Initialize with current position
+
     return () => {
       api.off("select", onSelect);
     };
   }, [api]);
 
-  // how many slides per “page”
+  // Calculate total number of pages based on slidesPerPage
   const slidesPerPage = isMobile ? 1 : 2;
+  const totalPages = Math.ceil(images.length / slidesPerPage);
+
+  // Group images into pairs for desktop view
+  const getImagesForSlide = (index: number) => {
+    const startIdx = index * slidesPerPage;
+    return images.slice(startIdx, startIdx + slidesPerPage);
+  };
 
   return (
     <div className="w-full py-12 px-4 bg-memorial-blue/10" dir="rtl">
@@ -58,39 +71,42 @@ export default function ImageCarousel({ images, title }: ImageCarouselProps) {
           opts={{
             align: "start",
             loop: true,
+            dragFree: false,
+            skipSnaps: false,
             slidesToScroll: slidesPerPage,
           }}
           plugins={[autoplayPlugin()]}
           className="w-full relative"
           setApi={setApi}
         >
-          {/* restored the negative margin so Embla computes correctly */}
           <CarouselContent className="-ml-2 md:-ml-4">
-            {images.map((image, index) => (
+            {Array.from({ length: totalPages }).map((_, pageIndex) => (
               <CarouselItem
-                key={index}
-                className={cn(
-                  "pl-2 md:pl-4",
-                  isMobile ? "basis-full" : "basis-1/2"
-                )}
+                key={pageIndex}
+                className="pl-2 md:pl-4 basis-full md:basis-1/2"
               >
-                <div
-                  className={cn(
-                    "aspect-square overflow-hidden rounded-lg shadow-lg cursor-pointer",
-                    "transform transition-all duration-300",
-                    "hover:scale-105 hover:shadow-xl",
-                    "border-2 border-transparent hover:border-memorial-gold"
-                  )}
-                  onClick={() => setSelectedImage(image)}
-                >
-                  <div className="relative w-full h-full group">
-                    <img
-                      src={image}
-                      alt={`תמונה ${index + 1}`}
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
-                  </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-full">
+                  {getImagesForSlide(pageIndex).map((image, imageIndex) => (
+                    <div
+                      key={`${pageIndex}-${imageIndex}`}
+                      className={cn(
+                        "aspect-square overflow-hidden rounded-lg shadow-lg cursor-pointer",
+                        "transform transition-all duration-300",
+                        "hover:scale-105 hover:shadow-xl",
+                        "border-2 border-transparent hover:border-memorial-gold"
+                      )}
+                      onClick={() => setSelectedImage(image)}
+                    >
+                      <div className="relative w-full h-full group">
+                        <img
+                          src={image}
+                          alt={`תמונה ${pageIndex * slidesPerPage + imageIndex + 1}`}
+                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </CarouselItem>
             ))}
@@ -100,22 +116,20 @@ export default function ImageCarousel({ images, title }: ImageCarouselProps) {
           <CarouselNext className="rtl-flip -right-12 bg-white/80 hover:bg-white" />
         </Carousel>
 
-        {/* Dot indicators now jump by pages */}
+        {/* Dot indicators */}
         <div className="flex justify-center mt-4 gap-2">
-          {Array.from({ length: Math.ceil(images.length / slidesPerPage) }).map(
-            (_, page) => (
-              <button
-                key={page}
-                className={`h-2 w-2 rounded-full transition-all ${
-                  currentSlide === page * slidesPerPage
-                    ? "bg-memorial-gold w-3"
-                    : "bg-memorial-charcoal/30"
-                }`}
-                onClick={() => api?.scrollTo(page * slidesPerPage)}
-                aria-label={`Go to page ${page + 1}`}
-              />
-            )
-          )}
+          {Array.from({ length: totalPages }).map((_, page) => (
+            <button
+              key={page}
+              className={`h-2 rounded-full transition-all ${
+                currentSlide === page
+                  ? "bg-memorial-gold w-3"
+                  : "bg-memorial-charcoal/30 w-2"
+              }`}
+              onClick={() => api?.scrollTo(page)}
+              aria-label={`Go to page ${page + 1}`}
+            />
+          ))}
         </div>
       </div>
 
@@ -146,4 +160,3 @@ export default function ImageCarousel({ images, title }: ImageCarouselProps) {
     </div>
   );
 }
-
